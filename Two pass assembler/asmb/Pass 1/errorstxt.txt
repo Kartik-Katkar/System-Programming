@@ -1,0 +1,5 @@
+****** illegal operand
+****** unrecognized operation code
+****** missing comma in operand field  
+****** illegal address for a register 
+****** duplicate or misplaced START statement      

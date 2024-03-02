@@ -1,0 +1,16 @@
+MACRO ABC
+Load a
+Add b
+Mend
+MACRO ABC
+Load a
+Mul b
+Mend
+MACRO PQR
+Load a
+sub b
+Mend
+.Code
+ABC
+PQR
+Endp

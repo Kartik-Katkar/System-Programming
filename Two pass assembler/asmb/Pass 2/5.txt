@@ -1,0 +1,39 @@
+.2345678901234567890
+prog     start   1000
+.
+         LDX     #0
+RLOOP    TD      DEVF3
+         JEQ     RLOOP
+         RD      DEVF3
+         STCH    TEMP,X
+         COMP    FILEEND
+         LDA     #1
+         ADDR    A,X
+         JLT     RLOOP
+         JGT     RLOOP
+         RMO     X,A
+         SUB     #1
+         RMO     A,X
+         LDCH    LENGTH
+         LDA     #0
+WLOOP    TD      DEV04
+         JEQ     WLOOP
+         LDA     #1
+         SUBR    A,X  
+         LDCH    TEMP,X
+         RMO     A,T
+         RMO     X,A
+         COMP    #0
+         JLT     FINISH
+         RMO     T,A
+         WD      DEV04
+         J       WLOOP
+FINISH   J       *
+.
+TEMP     RESB    100
+LENGTH   RESW    3
+FILEEND  WORD    4
+DATA     RESB    100
+DEVF3    BYTE    X'F3'
+DEV04    BYTE    X'04'
+         END

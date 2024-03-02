@@ -1,0 +1,51 @@
+line no.     Address  Label    Mnem.   Operands    Comments
+1            00000000 .2345678901234567890
+2            00001000 PROG     START   1000
+3            00001000 .
+4            00001000          LDX     #0
+5            00001003 RLOOP    TD      DEVF3
+6            00001006          JEQ     RLOOP
+7            00001009          RD      DEVF3
+8            0000100c          STCH    TEMP,X
+9            0000100f          COMP    FILEEND
+10           00001012          LDA     #1
+11           00001015          ADDR    A,X
+12           00001017          JLT     RLOOP
+13           0000101a          JGT     RLOOP
+14           0000101d          RMO     X,A
+15           0000101f          SUB     #1
+16           00001022          RMO     A,X
+17           00001024          LDCH    LENGTH
+18           00001027          LDA     #0
+19           0000102a WLOOP    TD      DEV04
+20           0000102d          JEQ     WLOOP
+21           00001030          LDA     #1
+22           00001033          SUBR    A,X  
+23           00001035          LDCH    TEMP,X
+24           00001038          RMO     A,T
+25           0000103a          RMO     X,A
+26           0000103c          COMP    #0
+27           0000103f          JLT     FINISH
+28           00001042          RMO     T,A
+29           00001044          WD      DEV04
+30           00001047          J       WLOOP
+31           0000104a FINISH   J       *
+32           0000104d .
+33           0000104d TEMP     RESB    100
+34           000010b1 LENGTH   RESW    3
+35           000010ba FILEEND  WORD    4
+36           000010bd DATA     RESB    100
+37           00001121 DEVF3    BYTE    X'F3'
+38           00001122 DEV04    BYTE    X'04'
+39           00001123          END
+     e n d     p h a s e  1 
+  s y m b o l     t a b l e   (values in decimal) 
+RLOOP 4099 Relocatable.
+WLOOP 4138 Relocatable.
+FINISH 4170 Relocatable.
+TEMP 4173 Relocatable.
+LENGTH 4273 Relocatable.
+FILEEND 4282 Relocatable.
+DATA 4285 Relocatable.
+DEVF3 4385 Relocatable.
+DEV04 4386 Relocatable.

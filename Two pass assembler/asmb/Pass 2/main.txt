@@ -1,0 +1,153 @@
+#include <bits/stdc++.h>
+#include<Mnemonic.h>
+#include <iostream>
+#include <fstream>
+#include <regex>
+#include <vector>
+
+using namespace std;
+
+vector<string> read(string filename)
+{
+
+    vector<string> lines;
+
+    lines.clear();
+    int n = filename.length();
+    char char_array[n+1];
+    strcpy(char_array, filename.c_str());
+    ifstream file;
+    file.open(char_array);
+    if(file.is_open())
+    {
+        string s;
+        while (getline(file, s))
+        {
+            lines.push_back(s);
+        }
+    }
+    else
+    {
+
+        cout << "Error in file : check if the path contain spaces" ;
+    }
+    return lines;
+}
+
+int main()
+{
+    string filename = "4.txt" ;
+    Mnemonic mne;
+    mne.fillMnemonics();
+    cout<<mne.getSize()<<endl;
+    vector <string> lines = read(filename);
+    vector <string> code ;
+    string start ("000");
+    int counter=0;
+    cout<<lines.size()<<endl;
+    for (int i =0 ; i < lines.size() ; i++)
+    {
+        string line = lines[i] ;
+        transform(line.begin(), line.end(), line.begin(), ::toupper);
+        regex regex1("^(\\s)*([_|A-Z|0-9]+)*?(\\s)+([_|A-Z]+)(\\s)*(([A X S T L F])(\\s)*[,](\\s)*([A X S T L F]))?(\\s)*$"); // ADDR r1,r2
+        regex regex2("^(\\s)*([_|A-Z|0-9]+)*?(\\s)*([_|A-Z]+)(\\s)*((([_|'|#|@])?(\\s)*(([A-Z0-9]+)))[,](\\s)*([X]))(\\s)*$"); // LDA #300
+        regex regex3("^(\\s)*([_|A-Z|0-9]]+)*?(\\s)*([_|A-Z]+)(\\s)*([*])(\\s)*$"); //JUMP *
+        regex regex4("^(\\s)*([_|A-Z|0-9]+)*?(\\s)*([_|A-Z]+)(\\s)*(([_|'|#|@])?(\\s)*(([A-Z|0-9]+)))(\\s)*$");
+        regex regex5("^(\\s)*([_|A-Z|0-9]+)*?(\\s)*([_|A-Z]+)(\\s)*(=?[X|C][']([A-Z0-9]+)['])(\\s)*$"); //x'sasa'
+        regex regex6("^\\s*$");//spaces
+        regex regex7("^[\\s]*\\..*");//comment
+        smatch match;
+
+        if (regex_search(line, match, regex1) == true)
+        {
+            cout<<line<<endl;
+            cout<<1<<endl;
+            cout<<mne.getOpCode(match.str(4))<<endl;
+        }
+        else if (regex_search(line, match, regex2) == true)
+        {
+                 cout<<line<<endl;
+                 cout<<2<<endl;
+                 cout<<mne.getOpCode(match.str(4))<<endl;
+
+        }
+        else if (regex_search(line, match, regex3) == true)
+        {
+                 cout<<line<<endl;
+                 cout<<3<<endl;
+                 cout<<mne.getOpCode(match.str(4))<<endl;
+
+        }
+        else if (regex_search(line, match, regex4) == true)
+        {
+                cout<<line<<endl;
+                cout<<4<<endl;
+                cout<<mne.getOpCode(match.str(4))<<endl;
+
+            if(match.str(4)=="start")
+            {
+                if(start=="000")
+                {
+                    stringstream ss;
+
+
+                    ss<<setfill('0') << setw(8)<<std::hex<<match.str(6);
+                    ss>>std::hex>>counter;
+                    string state ;
+                    state =ss.str()+" "+line;
+                    code.push_back(state);
+
+                }
+                else
+                {
+                    stringstream ss;
+                    ss<<setfill('0') << setw(8)<<std::hex<<match.str(6);
+                    ss>>std::hex>>counter;
+                    string state ;
+                    state =ss.str()+line;
+                    code.push_back(state);
+                    string error="****** duplicate or misplaced START statement";
+                    code.push_back(error);
+
+
+
+                }
+
+            }
+        }
+        else if (regex_search(line, match, regex5) == true)
+        {
+            cout<<line<<endl;
+            cout<<5<<endl;
+            cout<<mne.getOpCode(match.str(4))<<endl;
+        }
+        else if (regex_search(line, match, regex6) == true)
+        {
+
+        }
+        else if (regex_search(line, match, regex7) == true)
+        {
+
+
+        }
+        else
+        {
+            code.push_back(line);
+
+            string error="****** illegal operand";
+            code.push_back(error);
+
+        }
+
+
+    }
+    cout<<code.size()<<endl;
+    for (int i=0 ; i<code.size(); i++)
+    {
+        cout<<code[i]<<endl;
+    }
+    return 0;
+}
+
+
+

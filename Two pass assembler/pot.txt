@@ -1,0 +1,6 @@
+DB 1
+DW 1
+ORG 1
+ENDP 0
+CONST 1
+END 0

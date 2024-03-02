@@ -1,0 +1,11 @@
+line no.     Address  Label    Mnem.   Operands Comments
+1            00000000 .23456789012345678901234567890123456
+2            000003A0 TERMPROJ START   3A0
+3            000003a0 .THIS IS A COMMENT LINE
+4            000003a0 LBL1     BYTE    C'ABCDEF'
+5            000003a6 LBL2     RESB    4
+6            000003aa LBL2     RESW    1
+****** duplicate label definition  
+7            000003ad TOP      LDA     ZERO
+8            000003b0          LDX     #INDEX
+   i n c o m p l e t e    a s s e m b l y 

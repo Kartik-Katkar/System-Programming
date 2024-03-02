@@ -1,0 +1,19 @@
+read n
+load zero
+store count
+store sum
+load x
+add sum
+store sum
+load count
+add one
+store count
+sub n
+write sum
+endp
+zero
+one
+sum
+const
+n
+x

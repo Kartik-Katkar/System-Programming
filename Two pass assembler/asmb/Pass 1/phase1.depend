@@ -1,0 +1,90 @@
+# depslib dependency file v1.0
+1556228934 source:e:\college\1st semster\programming 1\project\phase1\main.cpp
+	<bits/stdc++.h>
+	<iostream>
+	<fstream>
+	<regex>
+	<vector>
+	"Mnemonic.h"
+
+1556023466 source:e:\college\1st semster\programming 1\project\phase1\reading.cpp
+	"reading.h"
+	<fstream>
+	<string>
+	<iostream>
+	<bits/stdc++.h>
+
+1556023466 e:\college\1st semster\programming 1\project\phase1\include\reading.h
+	<string>
+	<vector>
+
+1556154570 source:e:\college\1st semster\programming 1\project\phase1\mnemonic.cpp
+	"Mnemonic.h"
+	<iostream>
+	<map>
+	<vector>
+	<fstream>
+	<iterator>
+	<sstream>
+
+1556090609 e:\college\1st semster\programming 1\project\phase1\include\mnemonic.h
+	<string>
+
+1556015013 source:e:\college\1st semster\programming 1\project\phase1\validation.cpp
+	"Validation.h"
+
+1556015013 e:\college\1st semster\programming 1\project\phase1\include\validation.h
+	<string>
+	<iostream>
+	<bits/stdc++.h>
+
+1556145776 e:\college\1st semster\programming 1\project\phase1\mnemonic.h
+	<string>
+
+1556148852 source:e:\college\1st semster\programming 1\project\phase1\directives.cpp
+	"directives.h"
+
+1556151181 e:\college\1st semster\programming 1\project\phase1\directives.h
+
+1556294059 source:c:\users\ziadh\downloads\compressed\phase1\phase1\main.cpp
+	<bits/stdc++.h>
+	<iostream>
+	<fstream>
+	<regex>
+	<vector>
+	"Mnemonic.h"
+
+1556145776 c:\users\ziadh\downloads\compressed\phase1\phase1\mnemonic.h
+	<string>
+
+1556154570 source:c:\users\ziadh\downloads\compressed\phase1\phase1\mnemonic.cpp
+	"Mnemonic.h"
+	<iostream>
+	<map>
+	<vector>
+	<fstream>
+	<iterator>
+	<sstream>
+
+1556023466 source:c:\users\ziadh\downloads\compressed\phase1\phase1\reading.cpp
+	"reading.h"
+	<fstream>
+	<string>
+	<iostream>
+	<bits/stdc++.h>
+
+1556015013 source:c:\users\ziadh\downloads\compressed\phase1\phase1\validation.cpp
+	"Validation.h"
+
+1556154570 source:e:\the faculty\2nd year\2nd semister\systems programming\project\phase1\mnemonic.cpp
+	"Mnemonic.h"
+	<iostream>
+	<map>
+	<vector>
+	<fstream>
+	<iterator>
+	<sstream>
+
+1556145776 e:\the faculty\2nd year\2nd semister\systems programming\project\phase1\mnemonic.h
+	<string>
+

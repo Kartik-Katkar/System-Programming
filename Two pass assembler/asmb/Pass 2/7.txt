@@ -1,0 +1,14 @@
+.2345678901234567890
+         START   1000
+         LDT     #297
+         LDX     #3
+         LDS     #3
+LOOP     LDA     LOC+3,X
+         ADD     LOC+3,X
+         STA     LOC,X
+         ADDR    S,X
+         COMPR   X,T
+         JLT     LOOP
+LOC      RESW    100
+ARR      BYTE    C'ZIAD'
+         END

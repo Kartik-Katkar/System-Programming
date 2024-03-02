@@ -1,0 +1,40 @@
+line no.     Address  Label    Mnem.   Operands    Comments          OpCODE
+1            00000000 .2345678901234567890
+2            00001000 PROG     START   1000
+3            00001000 .
+4            00001000          LDX     #0                            50000
+5            00001003 RLOOP    TD      DEVF3                         E3211b
+6            00001006          JEQ     RLOOP                         332ffa
+7            00001009          RD      DEVF3                         DB2115
+8            0000100c          STCH    TEMP,X                        57A03e
+9            0000100f          COMP    FILEEND                       2B20a8
+10           00001012          LDA     #1                            10001
+11           00001015          ADDR    A,X                           9001
+12           00001017          JLT     RLOOP                         3B2fe9
+13           0000101a          JGT     RLOOP                         372fe6
+14           0000101d          RMO     X,A                           AC10
+15           0000101f          SUB     #1                            1D0001
+16           00001022          RMO     A,X                           AC01
+17           00001024          LDCH    LENGTH                        53208a
+18           00001027          LDA     #0                            10000
+19           0000102a WLOOP    TD      DEV04                         E320f5
+20           0000102d          JEQ     WLOOP                         332ffa
+21           00001030          LDA     #1                            10001
+22           00001033          SUBR    A,X                             9401
+23           00001035          LDCH    TEMP,X                        53A015
+24           00001038          RMO     A,T                           AC05
+25           0000103a          RMO     X,A                           AC10
+26           0000103c          COMP    #0                            290000
+27           0000103f          JLT     FINISH                        3B2008
+28           00001042          RMO     T,A                           AC50
+29           00001044          WD      DEV04                         DF20db
+30           00001047          J       WLOOP                         3F2fe0
+31           0000104a FINISH   J       *                             3F204a
+32           0000104d .
+33           0000104d TEMP     RESB    100
+34           000010b1 LENGTH   RESW    3
+35           000010ba FILEEND  WORD    4                             000004
+36           000010bd DATA     RESB    100
+37           00001121 DEVF3    BYTE    X'F3'                         F3
+38           00001122 DEV04    BYTE    X'04'                         04
+39           00001123          END
